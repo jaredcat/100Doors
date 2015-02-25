@@ -11,7 +11,7 @@ why odds shift to the unopened door and not equally between the two remaining cl
 
 
 ## Instructions:
-Requires Python (3.4 if you run into issues on lower versions)
+Requires Python (3.4 if you run into issues on lower versions)  
 Follow on screen instructions  
 
 ## Features: 

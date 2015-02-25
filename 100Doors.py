@@ -1,11 +1,11 @@
 import random
 
-
+# Simply picks the winning door at random
 def door_picker():
     winner = random.randrange(1, doors+1)
     return winner
 
-
+# This opens all the other doors and allows the user to swich or stay
 def door_opener(choice, winner, switch, enable_auto):
     if enable_auto == "n":
         switch = None
@@ -26,7 +26,7 @@ def door_opener(choice, winner, switch, enable_auto):
             choice = winner
     return choice, switch
 
-
+# This is the end game. Displays if the player won or lost
 def show_winner(choice, winner, switch):
     if switch == "n":
         print("You did not switch and you ", end="")
@@ -39,13 +39,14 @@ def show_winner(choice, winner, switch):
         print("lost.")
         return 0
 
-
+# Calculates the amount of games won vs played and your % of wins
 def show_rate(wins, games):
     rate = wins / games
     print("\n" + str(wins) + " wins of " + str(games) + " games")
     print("You are winning " + str(rate*100) + "% of the time.\n\n")
 
-
+# Sorry for the mess
+# Theres cleaner ways to made this main but I got tired
 def main():
     global doors
     doors = "0"

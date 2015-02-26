@@ -1,9 +1,9 @@
 # 100Doors
 A Monty Hall Simulator in python.
 
-People were annyoing me in a thread that didn't seem to understand this problem. I wanted to see how easy I could build this 
-in python.
-Few hours later and I had a pretty robust simulator that confirms that you have n-1/n odds of winning when you switch 
+There was a post about the Monty Hall problem and how it stumped the mathmatics world for years. After explaining it, people in the comments still firmly belived that the odds should be 50%. So, I wanted to see how easy I could build this 
+in python just to prove a point to myself and see the win rate with some big data.  
+A few hours later and I had a pretty robust simulator that confirms that you have n-1/n odds of winning when you switch 
 instead of staying with your initial guess!  
 
 The name comes from the concept of extrapolating the initial scenario to a large number to make it easier to understand

@@ -165,6 +165,7 @@ def prisoners_simulation(total_games, number_loops, strategy):
             wins = wins + 1
     return wins
 
+
 def load_monty_hall():
     wins = 0
     games = 0
@@ -172,7 +173,7 @@ def load_monty_hall():
     switch = "0"
     enable_auto = None
     keep_playing = "y"
-    doors="0"
+    doors = "0"
 
     while not (doors.isdigit() and 2 < int(doors)):
         doors = input("How many doors would you like to play with? ")
@@ -193,13 +194,13 @@ def load_monty_hall():
         if enable_auto == "y":
             choice = str(random.randrange(1, doors + 1))
         print("There are " + str(doors) +
-                " doors in front of you.\nOne contains a prize.\n")
+              " doors in front of you.\nOne contains a prize.\n")
         if enable_auto == "n":
             while not (choice.isdigit() and 0 < int(choice) < doors + 1):
                 choice = input("Pick one: ")
         winner = door_picker(doors)
         choice, switch = door_opener(doors, int(choice), winner, switch,
-                                        enable_auto)
+                                     enable_auto)
         wins += show_winner(int(choice), winner, switch)
         games += 1
         show_rate(wins, games)
@@ -238,11 +239,12 @@ def load_prisoners_problem():
         number_loops = input("Enter the number of loops? (default: 50): ")
         number_loops = int(number_loops or 50)
         print("You have entered " + str(number_loops) +
-                " number of loops.")
+              " number of loops.")
         print("Simulating...")
         prisoners_wins = prisoners_simulation(total_games, number_loops,
-                                                strategy)
+                                              strategy)
         show_rate(prisoners_wins, total_games)
+
 
 def main():
     """ """

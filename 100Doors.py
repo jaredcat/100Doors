@@ -4,6 +4,7 @@ import random
 
 
 def door_picker():
+    """ """
     winner = random.randrange(1, doors + 1)
     return winner
 
@@ -12,6 +13,14 @@ def door_picker():
 
 
 def door_opener(choice, winner, switch, enable_auto):
+    """
+
+    :param choice: 
+    :param winner: 
+    :param switch: 
+    :param enable_auto: 
+
+    """
     if enable_auto == "n":
         switch = None
     if choice == winner:
@@ -36,6 +45,13 @@ def door_opener(choice, winner, switch, enable_auto):
 
 
 def show_winner(choice, winner, switch):
+    """
+
+    :param choice: 
+    :param winner: 
+    :param switch: 
+
+    """
     if switch == "n":
         print("You did not switch and you ", end="")
     else:
@@ -52,12 +68,19 @@ def show_winner(choice, winner, switch):
 
 
 def show_rate(wins, games):
+    """
+
+    :param wins: 
+    :param games: 
+
+    """
     rate = wins / games
     print("\n" + str(wins) + " wins of " + str(games) + " games")
     print("You are winning " + str(rate * 100) + "% of the time.\n\n")
 
 
 def shuffle_boxes():
+    """ """
     prisoners_numbers = [x for x in range(0, 100)]
     boxes = {}
     random.shuffle(prisoners_numbers)
@@ -67,6 +90,13 @@ def shuffle_boxes():
 
 
 def random_strategy(prisoner_number, boxes, number_loop):
+    """
+
+    :param prisoner_number: 
+    :param boxes: 
+    :param number_loop: 
+
+    """
     for k in range(0, 50):
         if prisoner_number == boxes[k]:
             return True
@@ -74,6 +104,13 @@ def random_strategy(prisoner_number, boxes, number_loop):
 
 
 def try_strategy(boxes, strategy, number_loops):
+    """
+
+    :param boxes: 
+    :param strategy: 
+    :param number_loops: 
+
+    """
     n_correct = 0
     for i in range(0, 100):
         correct = strategy(i, boxes, number_loops)
@@ -83,6 +120,13 @@ def try_strategy(boxes, strategy, number_loops):
 
 
 def loop_strategy(prisoner_number, boxes, number_loops):
+    """
+
+    :param prisoner_number: 
+    :param boxes: 
+    :param number_loops: 
+
+    """
     next_box = prisoner_number
     for x in range(number_loops):
         if boxes[next_box] == prisoner_number:
@@ -92,6 +136,13 @@ def loop_strategy(prisoner_number, boxes, number_loops):
 
 
 def prisoners_simulation(total_games, number_loops, strategy):
+    """
+
+    :param total_games: 
+    :param number_loops: 
+    :param strategy: 
+
+    """
     wins = 0
     results = {}
     num_sim = total_games
@@ -115,6 +166,7 @@ def prisoners_simulation(total_games, number_loops, strategy):
 
 
 def main():
+    """ """
     global doors
     doors = "0"
     wins = 0

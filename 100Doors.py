@@ -29,8 +29,7 @@ def door_opener(choice, winner, switch, enable_auto):
             closed_door = random.randrange(1, doors + 1)
     else:
         closed_door = choice
-    print("I have opened all but doors " + str(closed_door) + " and " +
-          str(winner))
+    print("I have opened all but doors " + str(closed_door) + " and " + str(winner))
     if enable_auto == "n":
         while not (switch == "y" or switch == "n"):
             switch = input("Would you like to switch?(y\\n): ").lower()
@@ -187,8 +186,7 @@ def main():
             doors = input("How many doors would you like to play with? ")
         doors = int(doors)
         while not (enable_auto == "y" or enable_auto == "n"):
-            enable_auto = input(
-                "Would you like to see autoplay? (y\\n): ").lower()
+            enable_auto = input("Would you like to see autoplay? (y\\n): ").lower()
         if enable_auto == "y":
             while not (switch == "y" or switch == "n"):
                 switch = input("Always switch doors? (y\\n): ")
@@ -198,14 +196,16 @@ def main():
             choice = "0"
             if enable_auto == "y":
                 choice = str(random.randrange(1, doors + 1))
-            print("There are " + str(doors) +
-                  " doors in front of you.\nOne contains a prize.\n")
+            print(
+                "There are "
+                + str(doors)
+                + " doors in front of you.\nOne contains a prize.\n"
+            )
             if enable_auto == "n":
                 while not (choice.isdigit() and 0 < int(choice) < doors + 1):
                     choice = input("Pick one: ")
             winner = door_picker()
-            choice, switch = door_opener(int(choice), winner, switch,
-                                         enable_auto)
+            choice, switch = door_opener(int(choice), winner, switch, enable_auto)
             wins += show_winner(int(choice), winner, switch)
             games += 1
             show_rate(wins, games)
@@ -213,7 +213,8 @@ def main():
                 keep_playing = None
                 while not (keep_playing == "y" or keep_playing == "n"):
                     keep_playing = input(
-                        "Would you like to keep playing? (y\\n): ").lower()
+                        "Would you like to keep playing? (y\\n): "
+                    ).lower()
             elif int(total_games) == games:
                 keep_playing = "n"
 
@@ -223,9 +224,7 @@ def main():
         total_games = int(total_games)
 
         strategy = "0"
-        print(
-            '\nChoose a strategy you want to simulate the "100 Prisoners Problem":'
-        )
+        print('\nChoose a strategy you want to simulate the "100 Prisoners Problem":')
         print("1. Random Strategy")
         print("2. Loop Strategy")
         options = [1, 2]
@@ -240,11 +239,9 @@ def main():
         elif strategy == 2:
             number_loops = input("Enter the number of loops? (default: 50): ")
             number_loops = int(number_loops or 50)
-            print("You have entered " + str(number_loops) +
-                  " number of loops.")
+            print("You have entered " + str(number_loops) + " number of loops.")
             print("Simulating...")
-            prisoners_wins = prisoners_simulation(total_games, number_loops,
-                                                  strategy)
+            prisoners_wins = prisoners_simulation(total_games, number_loops, strategy)
             show_rate(prisoners_wins, total_games)
 
     else:

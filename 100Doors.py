@@ -5,7 +5,7 @@ def door_picker():
     winner = random.randrange(1, doors+1)
     return winner
 
-# This opens all the other doors and allows the user to swich or stay
+# This opens all the other doors and allows the user to switch or stay
 def door_opener(choice, winner, switch, enable_auto):
     if enable_auto == "n":
         switch = None
@@ -87,7 +87,7 @@ def prisoners_simulation(total_games, number_loops,strategy):
         elif strategy == 2:
             n_correct = try_strategy(boxes, loop_strategy, number_loops)
             results[sim] = n_correct
-     
+
     for sim in range(num_sim):
         if results[sim] == 100:
             wins = wins + 1
@@ -140,13 +140,13 @@ def main():
                     keep_playing = input("Would you like to keep playing? (y\\n): ").lower()
             elif int(total_games) == games:
                 keep_playing = "n"
-    
+
     elif choice == 2:
         while not (total_games.isdigit() and 0 < int(total_games)):
                 total_games = input("How many games?: ")
         total_games = int(total_games)
-        
-        
+
+
         strategy = "0"
         print("\nChoose a strategy you want to simulate the \"100 Prisoners Problem\":")
         print("1. Random Strategy")
@@ -155,7 +155,7 @@ def main():
         while not (strategy.isdigit() and int(strategy) in options):
                 strategy = input("Select the strategy: ")
         strategy = int(strategy)
-        
+
         if strategy == 1:
             print("Simulating....")
             prisoners_wins = prisoners_simulation(total_games,0,strategy)
@@ -167,7 +167,7 @@ def main():
             print("Simulating...")
             prisoners_wins = prisoners_simulation(total_games, number_loops,strategy)
             show_rate(prisoners_wins, total_games)
-    
+
     else:
         print("\nWrong option selected!")
 

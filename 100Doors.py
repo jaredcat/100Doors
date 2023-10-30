@@ -5,7 +5,9 @@ import random
 
 def door_picker(doors):
     """
-    :param int doors:
+
+    :param int: doors:
+    :param doors: 
 
     """
     winner = random.randrange(1, doors + 1)
@@ -18,11 +20,12 @@ def door_picker(doors):
 def door_opener(doors, choice, winner, switch, enable_auto):
     """
 
-    :param int doors:
-    :param choice:
-    :param winner:
-    :param switch:
-    :param enable_auto:
+    :param int: doors:
+    :param choice: param winner:
+    :param switch: param enable_auto:
+    :param doors: 
+    :param winner: 
+    :param enable_auto: 
 
     """
     if enable_auto == "n":
@@ -51,9 +54,9 @@ def door_opener(doors, choice, winner, switch, enable_auto):
 def show_winner(choice, winner, switch):
     """
 
-    :param choice:
-    :param winner:
-    :param switch:
+    :param choice: param winner:
+    :param switch: 
+    :param winner: 
 
     """
     if switch == "n":
@@ -74,8 +77,8 @@ def show_winner(choice, winner, switch):
 def show_rate(wins, games):
     """
 
-    :param wins:
-    :param games:
+    :param wins: param games:
+    :param games: 
 
     """
     rate = wins / games
@@ -96,9 +99,9 @@ def shuffle_boxes():
 def random_strategy(prisoner_number, boxes, number_loop):
     """
 
-    :param prisoner_number:
-    :param boxes:
-    :param number_loop:
+    :param prisoner_number: param boxes:
+    :param number_loop: 
+    :param boxes: 
 
     """
     for k in range(0, 50):
@@ -110,9 +113,9 @@ def random_strategy(prisoner_number, boxes, number_loop):
 def try_strategy(boxes, strategy, number_loops):
     """
 
-    :param boxes:
-    :param strategy:
-    :param number_loops:
+    :param boxes: param strategy:
+    :param number_loops: 
+    :param strategy: 
 
     """
     n_correct = 0
@@ -126,9 +129,9 @@ def try_strategy(boxes, strategy, number_loops):
 def loop_strategy(prisoner_number, boxes, number_loops):
     """
 
-    :param prisoner_number:
-    :param boxes:
-    :param number_loops:
+    :param prisoner_number: param boxes:
+    :param number_loops: 
+    :param boxes: 
 
     """
     next_box = prisoner_number
@@ -142,9 +145,9 @@ def loop_strategy(prisoner_number, boxes, number_loops):
 def prisoners_simulation(total_games, number_loops, strategy):
     """
 
-    :param total_games:
-    :param number_loops:
-    :param strategy:
+    :param total_games: param number_loops:
+    :param strategy: 
+    :param number_loops: 
 
     """
     wins = 0
@@ -166,6 +169,7 @@ def prisoners_simulation(total_games, number_loops, strategy):
 
 
 def load_monty_hall():
+    """ """
     wins = 0
     games = 0
     total_games = "0"
@@ -213,6 +217,7 @@ def load_monty_hall():
 
 
 def load_prisoners_problem():
+    """ """
     total_games = "0"
 
     while not (total_games.isdigit() and 0 < int(total_games)):

@@ -162,10 +162,6 @@ def prisoners_simulation(total_games, number_loops, strategy):
     return wins
 
 
-# Sorry for the mess
-# Theres cleaner ways to made this main but I got tired
-
-
 def main():
     """ """
     global doors

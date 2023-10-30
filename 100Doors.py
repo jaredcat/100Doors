@@ -15,10 +15,10 @@ def door_picker():
 def door_opener(choice, winner, switch, enable_auto):
     """
 
-    :param choice: 
-    :param winner: 
-    :param switch: 
-    :param enable_auto: 
+    :param choice:
+    :param winner:
+    :param switch:
+    :param enable_auto:
 
     """
     if enable_auto == "n":
@@ -47,9 +47,9 @@ def door_opener(choice, winner, switch, enable_auto):
 def show_winner(choice, winner, switch):
     """
 
-    :param choice: 
-    :param winner: 
-    :param switch: 
+    :param choice:
+    :param winner:
+    :param switch:
 
     """
     if switch == "n":
@@ -70,8 +70,8 @@ def show_winner(choice, winner, switch):
 def show_rate(wins, games):
     """
 
-    :param wins: 
-    :param games: 
+    :param wins:
+    :param games:
 
     """
     rate = wins / games
@@ -92,9 +92,9 @@ def shuffle_boxes():
 def random_strategy(prisoner_number, boxes, number_loop):
     """
 
-    :param prisoner_number: 
-    :param boxes: 
-    :param number_loop: 
+    :param prisoner_number:
+    :param boxes:
+    :param number_loop:
 
     """
     for k in range(0, 50):
@@ -106,9 +106,9 @@ def random_strategy(prisoner_number, boxes, number_loop):
 def try_strategy(boxes, strategy, number_loops):
     """
 
-    :param boxes: 
-    :param strategy: 
-    :param number_loops: 
+    :param boxes:
+    :param strategy:
+    :param number_loops:
 
     """
     n_correct = 0
@@ -122,9 +122,9 @@ def try_strategy(boxes, strategy, number_loops):
 def loop_strategy(prisoner_number, boxes, number_loops):
     """
 
-    :param prisoner_number: 
-    :param boxes: 
-    :param number_loops: 
+    :param prisoner_number:
+    :param boxes:
+    :param number_loops:
 
     """
     next_box = prisoner_number
@@ -138,9 +138,9 @@ def loop_strategy(prisoner_number, boxes, number_loops):
 def prisoners_simulation(total_games, number_loops, strategy):
     """
 
-    :param total_games: 
-    :param number_loops: 
-    :param strategy: 
+    :param total_games:
+    :param number_loops:
+    :param strategy:
 
     """
     wins = 0

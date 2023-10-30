@@ -3,8 +3,13 @@ import random
 # Simply picks the winning door at random
 
 
-def door_picker():
-    """ """
+def door_picker(doors):
+    """
+
+    :param int: doors:
+    :param doors:
+
+    """
     winner = random.randrange(1, doors + 1)
     return winner
 
@@ -12,12 +17,14 @@ def door_picker():
 # This opens all the other doors and allows the user to switch or stay
 
 
-def door_opener(choice, winner, switch, enable_auto):
+def door_opener(doors, choice, winner, switch, enable_auto):
     """
 
-    :param choice:
+    :param int: doors:
+    :param choice: param winner:
+    :param switch: param enable_auto:
+    :param doors:
     :param winner:
-    :param switch:
     :param enable_auto:
 
     """
@@ -48,9 +55,9 @@ def door_opener(choice, winner, switch, enable_auto):
 def show_winner(choice, winner, switch):
     """
 
-    :param choice:
-    :param winner:
+    :param choice: param winner:
     :param switch:
+    :param winner:
 
     """
     if switch == "n":
@@ -71,7 +78,7 @@ def show_winner(choice, winner, switch):
 def show_rate(wins, games):
     """
 
-    :param wins:
+    :param wins: param games:
     :param games:
 
     """
@@ -93,9 +100,9 @@ def shuffle_boxes():
 def random_strategy(prisoner_number, boxes, number_loop):
     """
 
-    :param prisoner_number:
-    :param boxes:
+    :param prisoner_number: param boxes:
     :param number_loop:
+    :param boxes:
 
     """
     for k in range(0, 50):
@@ -107,9 +114,9 @@ def random_strategy(prisoner_number, boxes, number_loop):
 def try_strategy(boxes, strategy, number_loops):
     """
 
-    :param boxes:
-    :param strategy:
+    :param boxes: param strategy:
     :param number_loops:
+    :param strategy:
 
     """
     n_correct = 0
@@ -123,9 +130,9 @@ def try_strategy(boxes, strategy, number_loops):
 def loop_strategy(prisoner_number, boxes, number_loops):
     """
 
-    :param prisoner_number:
-    :param boxes:
+    :param prisoner_number: param boxes:
     :param number_loops:
+    :param boxes:
 
     """
     next_box = prisoner_number
@@ -139,9 +146,9 @@ def loop_strategy(prisoner_number, boxes, number_loops):
 def prisoners_simulation(total_games, number_loops, strategy):
     """
 
-    :param total_games:
-    :param number_loops:
+    :param total_games: param number_loops:
     :param strategy:
+    :param number_loops:
 
     """
     wins = 0
@@ -162,89 +169,102 @@ def prisoners_simulation(total_games, number_loops, strategy):
     return wins
 
 
-def main():
+def load_monty_hall():
     """ """
-    global doors
-    doors = "0"
     wins = 0
     games = 0
     total_games = "0"
     switch = "0"
     enable_auto = None
     keep_playing = "y"
+    doors = "0"
+
+    while not (doors.isdigit() and 2 < int(doors)):
+        doors = input("How many doors would you like to play with? ")
+    doors = int(doors)
+
+    while not (enable_auto == "y" or enable_auto == "n"):
+        enable_auto = input("Would you like to see autoplay? (y\\n): ").lower()
+
+    if enable_auto == "y":
+        while not (switch == "y" or switch == "n"):
+            switch = input("Always switch doors? (y\\n): ")
+        while not (total_games.isdigit() and 0 < int(total_games)):
+            total_games = input("How many games?: ")
+
+    while keep_playing == "y":
+        choice = "0"
+        if enable_auto == "y":
+            choice = str(random.randrange(1, doors + 1))
+        print("There are " + str(doors) +
+              " doors in front of you.\nOne contains a prize.\n")
+        if enable_auto == "n":
+            while not (choice.isdigit() and 0 < int(choice) < doors + 1):
+                choice = input("Pick one: ")
+        winner = door_picker(doors)
+        choice, switch = door_opener(doors, int(choice), winner, switch,
+                                     enable_auto)
+        wins += show_winner(int(choice), winner, switch)
+        games += 1
+        show_rate(wins, games)
+        if enable_auto == "n":
+            keep_playing = None
+            while not (keep_playing == "y" or keep_playing == "n"):
+                keep_playing = input(
+                    "Would you like to keep playing? (y\\n): ").lower()
+        elif int(total_games) == games:
+            keep_playing = "n"
+
+
+def load_prisoners_problem():
+    """ """
+    total_games = "0"
+
+    while not (total_games.isdigit() and 0 < int(total_games)):
+        total_games = input("How many games?: ")
+    total_games = int(total_games)
+    print(
+        '\nChoose a strategy you want to simulate the "100 Prisoners Problem":'
+    )
+    print("1. Random Strategy")
+    print("2. Loop Strategy")
+    options = [1, 2]
+
+    strategy = "0"
+    while not (strategy.isdigit() and int(strategy) in options):
+        strategy = input("Select the strategy: ")
+    strategy = int(strategy)
+
+    if strategy == 1:
+        print("Simulating....")
+        prisoners_wins = prisoners_simulation(total_games, 0, strategy)
+        show_rate(prisoners_wins, total_games)
+    elif strategy == 2:
+        number_loops = input("Enter the number of loops? (default: 50): ")
+        number_loops = int(number_loops or 50)
+        print("You have entered " + str(number_loops) + " number of loops.")
+        print("Simulating...")
+        prisoners_wins = prisoners_simulation(total_games, number_loops,
+                                              strategy)
+        show_rate(prisoners_wins, total_games)
+
+
+def main():
+    """ """
     print("Choose a problem to play:")
     print("1. Monty Hall Problem")
     print("2. 100 Prisoners Problem")
-    choice = input("Enter the number of the problem you want to play: ")
+    options = [1, 2]
+
+    choice = "0"
+    while not (choice.isdigit() and int(choice) in options):
+        choice = input("Enter the number of the problem you want to play: ")
     choice = int(choice)
 
     if choice == 1:
-        while not (doors.isdigit() and 2 < int(doors)):
-            doors = input("How many doors would you like to play with? ")
-        doors = int(doors)
-        while not (enable_auto == "y" or enable_auto == "n"):
-            enable_auto = input(
-                "Would you like to see autoplay? (y\\n): ").lower()
-        if enable_auto == "y":
-            while not (switch == "y" or switch == "n"):
-                switch = input("Always switch doors? (y\\n): ")
-            while not (total_games.isdigit() and 0 < int(total_games)):
-                total_games = input("How many games?: ")
-        while keep_playing == "y":
-            choice = "0"
-            if enable_auto == "y":
-                choice = str(random.randrange(1, doors + 1))
-            print("There are " + str(doors) +
-                  " doors in front of you.\nOne contains a prize.\n")
-            if enable_auto == "n":
-                while not (choice.isdigit() and 0 < int(choice) < doors + 1):
-                    choice = input("Pick one: ")
-            winner = door_picker()
-            choice, switch = door_opener(int(choice), winner, switch,
-                                         enable_auto)
-            wins += show_winner(int(choice), winner, switch)
-            games += 1
-            show_rate(wins, games)
-            if enable_auto == "n":
-                keep_playing = None
-                while not (keep_playing == "y" or keep_playing == "n"):
-                    keep_playing = input(
-                        "Would you like to keep playing? (y\\n): ").lower()
-            elif int(total_games) == games:
-                keep_playing = "n"
-
+        load_monty_hall()
     elif choice == 2:
-        while not (total_games.isdigit() and 0 < int(total_games)):
-            total_games = input("How many games?: ")
-        total_games = int(total_games)
-
-        strategy = "0"
-        print(
-            '\nChoose a strategy you want to simulate the "100 Prisoners Problem":'
-        )
-        print("1. Random Strategy")
-        print("2. Loop Strategy")
-        options = [1, 2]
-        while not (strategy.isdigit() and int(strategy) in options):
-            strategy = input("Select the strategy: ")
-        strategy = int(strategy)
-
-        if strategy == 1:
-            print("Simulating....")
-            prisoners_wins = prisoners_simulation(total_games, 0, strategy)
-            show_rate(prisoners_wins, total_games)
-        elif strategy == 2:
-            number_loops = input("Enter the number of loops? (default: 50): ")
-            number_loops = int(number_loops or 50)
-            print("You have entered " + str(number_loops) +
-                  " number of loops.")
-            print("Simulating...")
-            prisoners_wins = prisoners_simulation(total_games, number_loops,
-                                                  strategy)
-            show_rate(prisoners_wins, total_games)
-
-    else:
-        print("\nWrong option selected!")
+        load_prisoners_problem()
 
 
 if __name__ == "__main__":

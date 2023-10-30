@@ -7,7 +7,7 @@ def door_picker(doors):
     """
 
     :param int: doors:
-    :param doors: 
+    :param doors:
 
     """
     winner = random.randrange(1, doors + 1)
@@ -24,8 +24,8 @@ def door_opener(doors, choice, winner, switch, enable_auto):
     :param choice: param winner:
     :param switch: param enable_auto:
     :param doors: param winner:
-    :param enable_auto: 
-    :param winner: 
+    :param enable_auto:
+    :param winner:
 
     """
     if enable_auto == "n":
@@ -56,7 +56,7 @@ def show_winner(choice, winner, switch):
 
     :param choice: param winner:
     :param switch: param winner:
-    :param winner: 
+    :param winner:
 
     """
     if switch == "n":
@@ -78,7 +78,7 @@ def show_rate(wins, games):
     """
 
     :param wins: param games:
-    :param games: 
+    :param games:
 
     """
     rate = wins / games
@@ -101,7 +101,7 @@ def random_strategy(prisoner_number, boxes, number_loop):
 
     :param prisoner_number: param boxes:
     :param number_loop: param boxes:
-    :param boxes: 
+    :param boxes:
 
     """
     for k in range(0, 50):
@@ -115,7 +115,7 @@ def try_strategy(boxes, strategy, number_loops):
 
     :param boxes: param strategy:
     :param number_loops: param strategy:
-    :param strategy: 
+    :param strategy:
 
     """
     n_correct = 0
@@ -131,7 +131,7 @@ def loop_strategy(prisoner_number, boxes, number_loops):
 
     :param prisoner_number: param boxes:
     :param number_loops: param boxes:
-    :param boxes: 
+    :param boxes:
 
     """
     next_box = prisoner_number
@@ -147,7 +147,7 @@ def prisoners_simulation(total_games, number_loops, strategy):
 
     :param total_games: param number_loops:
     :param strategy: param number_loops:
-    :param number_loops: 
+    :param number_loops:
 
     """
     wins = 0
